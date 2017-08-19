@@ -32,7 +32,7 @@ button.onclick = function(){
 var inputField = document.getElementById('name');
 var value = inputField.value;
 var submitBtn = document.getElementById('submit_btn');
-submit.onclick = function(){
+submitBtn.onclick = function(){
     //Make a request to server and send the name
     //Capture a list of names and render it as list
     var names = ['name1', 'name2', 'name3'];
