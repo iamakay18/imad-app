@@ -75,9 +75,9 @@ app.get('/counter', function(req, res){
 
 //names array initialized to empty
 var names = [];
-app.get('/submit-name/:name', function(req, res){
+app.get('/submit-name', function(req, res){ //URL http://xx.com/submit-name?name=xxxx
    //Recieve the name using params.
-   var name = req.params.name;
+   var name = req.query.name;
    
    //Add the recieved name to names array
    names.push(name);
