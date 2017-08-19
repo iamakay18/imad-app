@@ -74,6 +74,19 @@ app.get('/counter', function(req, res){
     res.send(counter.toString());
 });
 
+//names array initialized to empty
+var names = [];
+app.get('/submit-name/:name', function(req, res){
+   //Recieve the name using params.
+   var name = req.params.name;
+   
+   //Add the recieved name to names array
+   names.push[name];
+   
+   //JSON: JavaScript object notation
+   res.send(JSON.stringify(names));
+});
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
