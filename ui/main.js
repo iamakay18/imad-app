@@ -34,14 +34,29 @@ var value = inputField.value;
 var submitBtn = document.getElementById('submit_btn');
 submitBtn.onclick = function(){
     //Make a request to server and send the name
-    //Capture a list of names and render it as list
-    var names = ['name1', 'name2', 'name3'];
-    var list = '';
-    for(var i=0; i< names.length; i++ ){
-        list += '<li>' + names[i] + '</li>';
-    }
-    var ul = document.getElementById('name_list');
-    ul.innerHTML = list;
+    
+    var request = new XMLHttpRequest();
+    
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            //do this
+            if(request.status === 200){
+                //Capture a list of names and render it as list
+                var names = request.responseText;
+                names = JSON.parse(names);
+                var list = '';
+                for(var i=0; i< names.length; i++ ){
+                    list += '<li>' + names[i] + '</li>';
+                }
+                var ul = document.getElementById('name_list');
+                ul.innerHTML = list;
+            }
+        }
+    };
+    
+    //Make the request
+    request.open('GET','http://iamakay18.imad.hasura-app.io/submit-name?name=' + value,true);
+    request.send(null);
 };
 
 
