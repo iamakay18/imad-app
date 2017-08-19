@@ -29,10 +29,11 @@ button.onclick = function(){
 
 
 //AJAX Example
-var inputField = document.getElementById('name');
-var value = inputField.value;
 var submitBtn = document.getElementById('submit_btn');
 submitBtn.onclick = function(){
+    
+    var inputField = document.getElementById('name');
+    var value = inputField.value;
     //Make a request to server and send the name
     
     var request = new XMLHttpRequest();
