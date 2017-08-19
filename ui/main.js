@@ -1,13 +1,16 @@
-console.log('Loaded!');
+//Counter code
+//Get button reference from document
+var button = document.getElementById('counter');
 
-//Change the text using javascript
+var counter = 0;
 
-var element = document.getElementById('main-text'); 
-
-element.innerHTML = 'New Value';
-
-var img = document.getElementById('madi');
-
-img.onClick = function(){
-    img.style.marginLeft = '100px';
+//OnClick Listener to button
+button.onClick = function(){
+    
+    //Increment the counter
+    counter = counter + 1;
+    
+    //Modify the span dynamically.
+    var span = document.getIdByElement('count');
+    span.innerHTML = counter.toString();
 };
