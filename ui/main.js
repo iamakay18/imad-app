@@ -2,19 +2,32 @@
 //Get button reference from document
 var button = document.getElementById('counter');
 
-var counter = 0;
-
 //OnClick Listener to button
 button.onclick = function(){
     
-    //Increment the counter
-    counter = counter + 1;
+    //We have to increment the counterpage whenever a request is completed
+    //Check the XMLHttpRequest readyState by creating INSTANCE
+    var request = new XMLHttpRequest();
     
-    //Modify the span dynamically.
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
+    request.onreadystatechange = function(){
+        if(request.readystate === XMLHttpRequest.DONE){
+            //do this
+            if(request.status === 200){
+                var counter = request.responeText;
+                //Modify the span dynamically.
+                var span = document.getElementById('count');
+                span.innerHTML = counter.toString();
+            }
+        }
+    };
+    
+    //Make the request
+    request.open('GET','http://iamakay18.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
 
+
+//XMLHttpRequest Example
 var xhr = new XMLHttpRequest();
 console.log('UNSENT', xhr.readyState); // readyState will be 0
 
