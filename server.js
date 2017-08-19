@@ -81,7 +81,7 @@ app.get('/submit-name/:name', function(req, res){
    var name = req.params.name;
    
    //Add the recieved name to names array
-   names.push[name];
+   names.push(name);
    
    //JSON: JavaScript object notation
    res.send(JSON.stringify(names));
