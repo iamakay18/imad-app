@@ -11,6 +11,6 @@ button.onClick = function(){
     counter = counter + 1;
     
     //Modify the span dynamically.
-    var span = document.getIdByElement('count');
+    var span = document.getElementById('count');
     span.innerHTML = counter.toString();
 };
