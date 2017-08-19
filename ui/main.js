@@ -5,7 +5,7 @@ var button = document.getElementById('counter');
 var counter = 0;
 
 //OnClick Listener to button
-button.onClick = function(){
+button.onclick = function(){
     
     //Increment the counter
     counter = counter + 1;
