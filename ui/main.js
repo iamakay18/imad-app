@@ -27,6 +27,24 @@ button.onclick = function(){
 };
 
 
+
+//AJAX Example
+var inputField = document.getElementById('name');
+var value = inputField.value;
+var submitBtn = document.getElementById('submit_btn');
+submit.onclick = function(){
+    //Make a request to server and send the name
+    //Capture a list of names and render it as list
+    var names = ['name1', 'name2', 'name3'];
+    var list = '';
+    for(var i=0; i< names.length; i++ ){
+        list += '<li>' + names[i] + '</li>';
+    }
+    var ul = document.getElementById('name_list');
+    ul.innerHTML = list;
+};
+
+
 //XMLHttpRequest Example
 var xhr = new XMLHttpRequest();
 console.log('UNSENT', xhr.readyState); // readyState will be 0
