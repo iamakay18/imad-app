@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 });
 
 
-//Connection Pool
+//global variable for Connection Pool
 var pool = new Pool(config);
     
 app.get('/test-db', function(req, res){
@@ -32,14 +32,43 @@ app.get('/test-db', function(req, res){
     });
 });
 
-var articleOne = {
+
+//Articles object
+var article = {
+    'article-one': {
+        title: 'Article one',
+        heading: 'This is article one',
+        date: '14 August 2017',
+        content: `<p>
+                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
+                 </p>`
+    },
+    'article-two':{
+        title: 'Article two',
+        heading: 'This is article two',
+        date: '24 August 2037',
+        content: `<p>
+                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
+                 </p>`
+    },
+    'article-three':{
+        title: 'Article three',
+        heading: 'This is article three',
+        date: '50 August 2207',
+        content: `<p>
+                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
+                 </p>`
+    }
+};
+
+/*var articleOne = {
     title: 'Article one',
     heading: 'This is article one',
     date: '14 August 2017',
     content: `<p>
                     Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
              </p>`
-};
+};*/
 
 function createTemplate(data){
     
@@ -77,8 +106,23 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
-app.get('/article-one', function(req, res){
-   res.send(createTemplate(articleOne));
+app.get('/articles/:articleName', function(req, res){
+    //Below st. will take the endpoint as a parameter.
+    var articleName = req.params.articleName;
+    
+    
+    pool.query("SELECT * FROM article WHERE title = "+ req.params.articleName, function(err,result){
+       if(err){
+           res.status(500).send(err.toSring());
+       } else{
+           if(result.rows.length === 0){
+               res.status(404).send('Article not found');
+           } else{
+               var articleData = result.rows[0]; 
+               res.send(createTemplate(articleData));
+           }
+       }
+    });
 });
 
 app.get('/article-two', function(req, res){
