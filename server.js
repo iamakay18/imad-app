@@ -32,44 +32,6 @@ app.get('/test-db', function(req, res){
     });
 });
 
-
-//Articles object
-var article = {
-    'article-one': {
-        title: 'Article one',
-        heading: 'This is article one',
-        date: '14 August 2017',
-        content: `<p>
-                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
-                 </p>`
-    },
-    'article-two':{
-        title: 'Article two',
-        heading: 'This is article two',
-        date: '24 August 2037',
-        content: `<p>
-                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
-                 </p>`
-    },
-    'article-three':{
-        title: 'Article three',
-        heading: 'This is article three',
-        date: '50 August 2207',
-        content: `<p>
-                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
-                 </p>`
-    }
-};
-
-/*var articleOne = {
-    title: 'Article one',
-    heading: 'This is article one',
-    date: '14 August 2017',
-    content: `<p>
-                    Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.Here is the content.
-             </p>`
-};*/
-
 function createTemplate(data){
     
     var title = data.title;
@@ -119,14 +81,6 @@ app.get('/articles/:articleName', function(req, res){
            }
        }
     });
-});
-
-app.get('/article-two', function(req, res){
-    res.send("This is article two");
-});
-
-app.get('/article-three', function(req, res){
-    res.send("This is article three");
 });
 
 var counter = 0;
