@@ -75,7 +75,7 @@ app.post('/login', function(req, res){
                 var dbString = result.rows[0].password;
                 var salt = dbString.split('$')[2];
                 var hashPwd = hash(password, salt);
-                if (hashPwd === password){
+                if (hashPwd === dbString){
                     res.send('Successful login');   
                 }
             }
