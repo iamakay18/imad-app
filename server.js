@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
-var bodyParser = require('bodyparser');
+var bodyParser = require('body-parser');
 
 var config = {
     user: 'iamakay18',
@@ -49,7 +49,7 @@ app.get('/hash/:input', function(req, res){
 app.post('/createuser', function(req, res){
    var username = req.body.username; 
    var password = req.body.password;
-   var salt = randomBytes(128);
+   var salt = crypto.randomBytes(128).toString('hex');
    var hashPwd = hash(password,salt);
    
    pool.query('INSERT INTO "user" (username, password) VALUES($1,$2)', [username, hashPwd], function(err, result){
