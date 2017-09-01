@@ -42,7 +42,7 @@ submitBtn.onclick = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             //do this
             if(request.status === 200){
-                
+                alert('Login successful');
             }
         }
     };
