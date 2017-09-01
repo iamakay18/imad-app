@@ -1,9 +1,9 @@
 //Counter code
 //Get button reference from document
-var button = document.getElementById('counter');
+//var button = document.getElementById('counter');
 
 //OnClick Listener to button
-button.onclick = function(){
+/*button.onclick = function(){
     
     //We have to increment the counterpage whenever a request is completed
     //Check the XMLHttpRequest readyState by creating INSTANCE
@@ -24,7 +24,7 @@ button.onclick = function(){
     //Make the request
     request.open('GET','http://iamakay18.imad.hasura-app.io/counter',true);
     request.send(null);
-};
+};*/
 
 
 
@@ -32,32 +32,25 @@ button.onclick = function(){
 var submitBtn = document.getElementById('submit_btn');
 submitBtn.onclick = function(){
     
-    var inputField = document.getElementById('name');
-    var value = inputField.value;
-    //Make a request to server and send the name
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
     
+    //Make a request to server and send the name
     var request = new XMLHttpRequest();
     
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             //do this
             if(request.status === 200){
-                //Capture a list of names and render it as list
-                var names = request.responseText;
-                names = JSON.parse(names);
-                var list = '';
-                for(var i=0; i< names.length; i++ ){
-                    list += '<li>' + names[i] + '</li>';
-                }
-                var ul = document.getElementById('name_list');
-                ul.innerHTML = list;
+                
             }
         }
     };
     
     //Make the request
-    request.open('GET','http://iamakay18.imad.hasura-app.io/submit-name?name=' + value,true);
-    request.send(null);
+    request.open('POST','http://iamakay18.imad.hasura-app.io/login',true);
+    request.setRequestHeader('Content-Type', 'application/json')
+    request.send(JSON.stringify({username: username, password: password}));
 };
 
 
