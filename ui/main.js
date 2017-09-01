@@ -55,7 +55,7 @@ submitBtn.onclick = function(){
 
 
 //XMLHttpRequest Example
-var xhr = new XMLHttpRequest();
+/*var xhr = new XMLHttpRequest();
 console.log('UNSENT', xhr.readyState); // readyState will be 0
 
 xhr.open('GET', '/api', true);
@@ -69,4 +69,4 @@ xhr.onload = function () {
     console.log('DONE', xhr.readyState); // readyState will be 4
 };
 
-xhr.send(null);
+xhr.send(null);*/
